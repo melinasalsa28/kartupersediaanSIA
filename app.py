@@ -193,8 +193,8 @@ def main_app():
 
     if jenis == "Pembelian":
         total = qty * harga
-        saldo["qty"] += qty
-        saldo["nilai"] += total
+        saldo["qty"] = qty
+        saldo["nilai"] = total
 
         new_row = {
             "Tanggal": tanggal,
@@ -213,8 +213,8 @@ def main_app():
             return
 
         hpp = saldo["nilai"] / saldo["qty"] if saldo["qty"] > 0 else 0
-        saldo["qty"] -= qty
-        saldo["nilai"] -= hpp * qty
+        saldo["qty"] = qty
+        saldo["nilai"] = hpp * qty
 
         new_row = {
             "Tanggal": tanggal,
@@ -233,8 +233,8 @@ def main_app():
             return
 
         hpp = saldo["nilai"] / saldo["qty"] if saldo["qty"] > 0 else 0
-        saldo["qty"] -= qty
-        saldo["nilai"] -= hpp * qty
+        saldo["qty"] = qty
+        saldo["nilai"] = hpp * qty
 
         new_row = {
             "Tanggal": tanggal,
@@ -249,8 +249,8 @@ def main_app():
 
     elif jenis == "Retur Penjualan":
         total = qty * harga
-        saldo["qty"] += qty
-        saldo["nilai"] += total
+        saldo["qty"] = qty
+        saldo["nilai"] = total
 
         new_row = {
             "Tanggal": tanggal,
@@ -328,4 +328,5 @@ if "login" not in st.session_state:
 if st.session_state["login"]:
     main_app()
 else:
+
     login_page()
